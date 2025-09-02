@@ -1,0 +1,73 @@
+package oops;
+import java.util.Scanner;
+public class MatrixOps {
+
+	public static void main(String[] args) {
+		        Scanner sc = new Scanner(System.in);
+
+		        // Input matrix A
+		        System.out.print("Enter rows and columns of A: ");
+		        int r1 = sc.nextInt(), c1 = sc.nextInt();
+		        if (r1 <= 0 || c1 <= 0) {
+		            System.out.println("Invalid dimensions.");
+		            return;
+		        }
+		        int[][] A = new int[r1][c1];
+		        System.out.println("Enter elements of A:");
+		        for (int i = 0; i < r1; i++)
+		            for (int j = 0; j < c1; j++)
+		                A[i][j] = sc.nextInt();
+
+		        // Input matrix B
+		        System.out.print("Enter rows and columns of B: ");
+		        int r2 = sc.nextInt(), c2 = sc.nextInt();
+		        if (r2 <= 0 || c2 <= 0) {
+		            System.out.println("Invalid dimensions.");
+		            return;
+		        }
+		        int[][] B = new int[r2][c2];
+		        System.out.println("Enter elements of B:");
+		        for (int i = 0; i < r2; i++)
+		            for (int j = 0; j < c2; j++)
+		                B[i][j] = sc.nextInt();
+
+		        // Transpose of A
+		        System.out.println("Transpose of A:");
+		        for (int i = 0; i < c1; i++) {
+		            for (int j = 0; j < r1; j++)
+		                System.out.print(A[j][i] + " ");
+		            System.out.println();
+		        }
+
+		        // Transpose of B
+		        System.out.println("Transpose of B:");
+		        for (int i = 0; i < c2; i++) {
+		            for (int j = 0; j < r2; j++)
+		                System.out.print(B[j][i] + " ");
+		            System.out.println();
+		        }
+
+		        // Multiplication check
+		        if (c1 != r2) {
+		            System.out.println("Matrix multiplication not possible.");
+		            return;
+		        }
+
+		        // Multiplication
+		        int[][] C = new int[r1][c2];
+		        for (int i = 0; i < r1; i++)
+		            for (int j = 0; j < c2; j++)
+		                for (int k = 0; k < c1; k++)
+		                    C[i][j] += A[i][k] * B[k][j];
+
+		        // Print product
+		        System.out.println("Product of A and B:");
+		        for (int i = 0; i < r1; i++) {
+		            for (int j = 0; j < c2; j++)
+		                System.out.print(C[i][j] + " ");
+		            System.out.println();
+		        }
+		        sc.close();
+		    }
+		}
+
